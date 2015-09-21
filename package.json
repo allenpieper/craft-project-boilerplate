@@ -1,0 +1,29 @@
+{
+  "name": "milesherndon",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "~0.6.4",
+    "grunt-concurrent": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-handlebars": "~0.6.0",
+    "grunt-contrib-imagemin": "~0.4.0",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-modernizr": "metaloha/grunt-modernizr#d6657bf302bd9288e25a513197fb0e30c64ce677",
+    "grunt-notify": "~0.2.16",
+    "grunt-replace": "~0.5.1",
+    "grunt-rev": "~0.1.0",
+    "grunt-sass": "^1.0.0",
+    "grunt-svgmin": "~0.3.0",
+    "grunt-usemin": "~2.0.2",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.2.5"
+  }
+}

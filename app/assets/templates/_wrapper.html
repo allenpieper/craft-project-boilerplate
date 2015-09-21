@@ -1,0 +1,34 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    <link rel="home" href="{{ siteUrl }}" />
+
+    <!-- build:css /assets/stylesheets/styles.css -->
+    <link rel="stylesheet" href="/_tmp/stylesheets/styles.css">
+    <!-- endbuild -->
+
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+  </head>
+
+  <body>
+
+    {% block content %}
+    {% endblock %}
+
+    <script data-main="/_tmp/javascripts/main" src="/bower_components/requirejs/require.js"></script>
+  </body>
+</html>

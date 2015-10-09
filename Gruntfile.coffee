@@ -51,13 +51,13 @@ module.exports = (grunt) ->
             spawn: false
           files: ['<%= yeoman.app %>/assets/javascripts/{,*/}*.coffee']
           tasks: [
-            'coffee:dist'
+            'newer:coffee:dist'
             'notify:coffee'
           ]
 
       js:
         files: ['<%= yeoman.app %>/assets/javascripts/{,*/}*.js']
-        tasks: ['copy:js']
+        tasks: ['newer:sync:js']
 
       handlebars:
         options:
@@ -67,6 +67,12 @@ module.exports = (grunt) ->
           'handlebars'
           'notify:handlebars'
         ]
+        
+      templates:
+        options:
+          spawn: false
+        files: ['<%= yeoman.app %>/assets/templates/{,*/}*.html']
+        tasks: ['notify:templates']
 
       livereload:
         options:
@@ -85,25 +91,30 @@ module.exports = (grunt) ->
         dest: '<%= yeoman.dist %>'
         root: '<%= yeoman.app %>'
 
-    copy:
+    sync:
       dist:
-        expand: true
         dot: true
-        cwd: '<%= yeoman.app %>'
-        dest: '<%= yeoman.dist %>'
-        src: [
-          '**'
-          '!**/assets/stylesheets/**'
-          '!**/assets/javascripts/**'
-          '!**/bower_components/**'
-          '!**/_tmp/**'
+        files: [
+          cwd: '<%= yeoman.app %>'
+          src: [
+            '**'
+            '!**/assets/stylesheets/**'
+            '!**/assets/javascripts/**'
+            '!**/bower_components/**'
+            '!**/_tmp/**'
+          ]
+          dest: '<%= yeoman.dist %>'
         ]
+        failOnError: true
 
       js:
-        expand: true
-        cwd: '<%= yeoman.app %>/assets/javascripts/'
-        src: ['**/*.js']
-        dest: '<%= yeoman.app %>/_tmp/javascripts/'
+        dot: true
+        files:[
+          cwd: '<%= yeoman.app %>/assets/javascripts/'
+          src: ['**/*.js']
+          dest: '<%= yeoman.app %>/_tmp/javascripts/'
+        ]
+        failOnError: true
 
       requirejs:
         expand: true
@@ -133,20 +144,6 @@ module.exports = (grunt) ->
             '<%= yeoman.dist %>/assets/stylesheets/{,*/}*.css'
             '<%= yeoman.dist %>/assets/javascripts/{,*/}*.js'
           ]
-
-    clean:
-      dist:
-        dot: true
-        src: [
-          '_tmp'
-          '<%= yeoman.dist %>/*'
-        ]
-
-      dev:
-        dot: true
-        src: [
-          '<%= yeoman.app %>/_tmp'
-        ]
 
     imagemin:
       dist:
@@ -210,14 +207,17 @@ module.exports = (grunt) ->
         options:
           title: 'Handlebars compiled'
           message: 'Grunt successfully compiled your Handlebars files'
+      templates:
+        options:
+          title: 'Template reloaded'
+          message: 'Grunt successfully reloaded your template'
       dist:
         options:
           title: "Build complete"
           message: "Grunt successfully compiled your build in /<%= yeoman.dist %>/"
 
   grunt.registerTask "default", [
-    "clean:dev"
-    "copy:js"
+    "newer:sync:js"
     "sass:dev"
     "autoprefixer"
     "coffee"
@@ -226,7 +226,6 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask "build", [
-    "clean:dist"
     "sass:dist"
     "autoprefixer"
     "coffee:dist"
@@ -234,9 +233,8 @@ module.exports = (grunt) ->
     "useminPrepare"
     "concat"
     "cssmin"
-    "copy:dist"
+    "sync:dist"
     "requirejs"
-    "copy:requirejs"
     "uglify"
     "replace:dist"
     "concurrent:dist"

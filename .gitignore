@@ -33,8 +33,9 @@ dwsync.xml
 # Exclude uploaded images in subdirectories
 # Leave gitignore files in subdirectories
 # ------------------------------------------------------------
-/uploads/*/*
-!/uploads/*/.gitignore
+**/uploads/**
+**/uploads/*/**
+!**/uploads/*/.gitignore
 
 # CRAFT STORAGE
 # http://buildwithcraft.com/help/craft-storage-gitignore

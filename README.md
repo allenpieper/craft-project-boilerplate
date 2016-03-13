@@ -1,6 +1,6 @@
 # Craft CMS Project Boilerplate
 
-This is the project scaffolding we use at [MilesHerndon] for all of our Craft CMS projects.  
+This is the project scaffolding I use for all of my Craft CMS projects.
 
 ### Requirements
 * [Node.js]
@@ -26,11 +26,10 @@ $ npm install
 $ bower install
 ```
 
-Your project is now fully set up. You have two Grunt tasks in your Gruntfile: `` $ grunt `` for development and `` $ grunt build `` for project compilation. 
+Your project is now fully set up. You have two Grunt tasks in your Gruntfile: `` $ grunt `` for development and `` $ grunt build `` for project compilation.
 
 After running `` $ grunt build ``, your deploy-ready code will be located in the ``/dist/`` directory of your project.
 
-   [MilesHerndon]: <https://milesherndon.com>
    [Node.js]: <https://nodejs.org/en/>
    [Grunt]: <http://gruntjs.com/>
    [Bower]: <http://bower.io/>
@@ -40,4 +39,3 @@ After running `` $ grunt build ``, your deploy-ready code will be located in the
    [SMACSS]: <https://smacss.com/>
    [svg4everybody]: <https://github.com/jonathantneal/svg4everybody>
    [PictureFill]: <https://github.com/scottjehl/picturefill>
-
